@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
-
+/*
 import com.itextpdf.io.font.FontProgram;
 import com.itextpdf.io.font.constants.StandardFonts;
 import com.itextpdf.io.image.ImageData;
@@ -81,8 +81,8 @@ public class PdfUtils {
                     .add(fox)
                     .add(" jumps over the lazy ")
                     .add(dog);*/
-            // Add Paragraph to document
-
+            // Add Paragraph to document */
+/*
             com.itextpdf.layout.element.List list = new com.itextpdf.layout.element.List();
             list.add("Java");
             list.add("Go");
@@ -122,4 +122,4 @@ public class PdfUtils {
             }
         }
     }
-}
+}       */

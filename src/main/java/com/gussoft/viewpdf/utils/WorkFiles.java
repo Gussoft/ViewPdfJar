@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+import java.util.Objects;
 import java.util.zip.*;
 
 public class WorkFiles {
@@ -19,7 +20,7 @@ public class WorkFiles {
 
     private static final int BUFFER_SIZE = 2 * 1024;
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException {
         System.out.println("Welcome to the Jungle!");
         String entry = "C:\\Users\\LENOVO\\Desktop\\sinfirma.zip";
         String unzip = "C:\\Users\\LENOVO\\Desktop\\sinfirma\\";
@@ -30,11 +31,11 @@ public class WorkFiles {
         //listZip(entry);
         //unZip(entry, unzip);
        // doZip(entry, unzip);
-        readDirectoryToZip(unzip,entry);// mas rapido
+        //readDirectoryToZip(unzip,entry);// mas rapido
         //String filePath = "C:\\Users\\LENOVO\\Desktop\\well\\"; // representa una carpeta
         //String zipPath = "C:\\Users\\LENOVO\\Desktop\\well.zip"; // representa un archivo comprimido
         //zipMultiFile(filePath, zipPath); // muy lento
-
+        cleanDirectory(new File("C:\\Users\\Lenovo\\Desktop\\pruba"));
     }
 
     public static boolean copyFile(String in, String out) {
@@ -338,5 +339,26 @@ public class WorkFiles {
 
        }
 
+    }
+
+    //elimina todos los archivo dentro de la raiz, no carpetas
+    public static void cleanDirectory(File directory) throws IOException {
+        Objects.requireNonNull(directory, "Directory cannot be null");
+        if (!directory.exists() || !directory.isDirectory()) {
+            throw new FileNotFoundException("Directory '" + directory.getAbsolutePath() + "' not found");
+        } else if (directory.isDirectory()) {
+            File[] listFiles = directory.listFiles();
+            if (listFiles != null) {
+                for (File file : listFiles) {
+                    if (file.isDirectory()) {
+                        cleanDirectory(file);
+                    } else if (file.isFile()) {
+                        if (!file.delete()) {
+                            throw new IOException("Unable to delete file " + file.getAbsolutePath());
+                        }
+                    }
+                }
+            }
+        }
     }
 }

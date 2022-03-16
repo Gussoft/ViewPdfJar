@@ -25,13 +25,14 @@ public class ExamplePdfView {
                 ViewerPropertiesManager properties = ViewerPropertiesManager.getInstance();
                 //properties.getPreferences().putFloat(ViewerPropertiesManager.PROPERTY_DEFAULT_ZOOM_LEVEL, 1.25f);
                 properties.setBoolean(ViewerPropertiesManager.PROPERTY_SHOW_TOOLBAR_UTILITY, Boolean.FALSE);
-                //properties.getPreferences().putBoolean(ViewerPropertiesManager.PROPERTY_SHOW_TOOLBAR_ANNOTATION, Boolean.TRUE);
+                properties.getPreferences().putBoolean(ViewerPropertiesManager.PROPERTY_SHOW_TOOLBAR_ANNOTATION, Boolean.TRUE);
                 properties.setBoolean(ViewerPropertiesManager.PROPERTY_SHOW_UTILITYPANE_SEARCH, Boolean.FALSE);
                 properties.setBoolean(ViewerPropertiesManager.PROPERTY_SHOW_TOOLBAR_TOOL, Boolean.FALSE);
                 //properties.getPreferences().putBoolean(ViewerPropertiesManager.PROPERTY_SHOW_UTILITY_SAVE, false);
                 //properties.getPreferences().putInt(DocumentViewControllerImpl.FULL_SCREEN_VIEW, 0);
                 //properties.getPreferences().put(ViewerPropertiesManager.PROPERTY_TOKEN_SEPARATOR, String.valueOf(true));
                 //properties.getPreferences().remove(ViewerPropertiesManager.PROPERTY_DEFAULT_ZOOM_LEVEL);
+                properties.getPreferences().putBoolean("application.showLocalStorageDialogs", false);
 
                 SwingViewBuilder factory = new SwingViewBuilder(controller, properties);
 
